@@ -1,0 +1,99 @@
+#----------------------------------------------------#
+# - This is FrostedOPMod v3.0 | Created by Savnith - #
+#----------------------------------------------------#
+
+## General Server stuff ##
+server:
+    name: FrostedOP
+    ip: mc.frostedop.net
+    motd-line-1: "&3&m----------&f>>&b&l FrostedOP &f<<&3&m----------"
+    motd-line-2: "&b&m---&8[ &e&lOfficial FrostedOP Server &8]&b&m---"
+    motd-full-server: "&cThe server is currently full"
+    perm-ban-url: "https://frostedop.net"
+    gtfo-url: "https://frostedop.net"
+
+## All server Announcements ##
+announcer:
+    ## Is the announcer enabled? ##
+    enabled: true
+    
+    ## What is the prefix to the Announcer ##
+    prefix: "&bFrostedOP&8 >"
+    
+    ## Time delay in sec ##
+    delay: 180
+    
+    ## Message color ##
+    message-color: "&e"
+    
+    ## Messages to announce ##
+    messages:
+    - 'Welcome to FrostedOP, be sure to review our rules with "/rules"'
+    - 'We are looking for admins if you wish to apply and you meet all the requirements do "/ai" for more info'
+    - 'Savnith is the plugin creator & the server owner'
+    - 'If your not op do "/opme"'
+    - 'Want to help grow our server, be sure to vote for our server & advertise as you wish'
+    - 'Our plugin might have a few bugs be sure to make a new issue about the problem with "/issue"'
+    - 'We allow players to record on our server'
+    - 'Someone not following the rules? Report them "/report [player]"'
+    
+
+## Toggles ##
+toggles:
+    no-rain: true
+    autoday: true
+    
+## Fun stuff ##
+fun:
+    djump: false
+    
+## Disabled shit ##
+disabled:
+    cmdblock: true
+    lava-place: true
+    water-place: true
+    
+## Famous Players can't be banned by there usernames ##
+famous_players:
+  - savnith
+  - sinkable
+  - _windows
+  - lolcops
+  - honeydew
+  - xephos
+  - captainsparklez
+  - truemu
+  - kiershar
+  - fvdisco
+  - sethbling
+  - notch
+  - jeb_
+  - gamechap
+  - bertiechap
+  - vechs
+  - antvenom
+  - chimneyswift
+  - deadmau5
+  - etho
+  - ethoslab
+  - skydoesminecraft
+  - skythekidrs
+  - tobyturner
+  - xxslyfoxhoundxx
+  - paulsoaresjr
+  - sips_
+  - deadlox
+  - xxslyxx
+  - jeromeasf
+  - dinnerbone
+  - grumm
+  - grum
+  - evilseph
+  - cavemanfilms
+  - herobrine
+  - whiteboy7thst
+  - stampylonghead
+  - stampylongnose
+  - dantdm
+  - gizzy14gazza
+  - furiousdestroyer
