@@ -1,16 +1,16 @@
 package net.frostedop.frostedopmod;
 
-import java.util.logging.Level;
-import net.frostedop.frostedopmod.listeners.F_BlockListener;
-import net.frostedop.frostedopmod.commands.F_CommandLoader;
+import net.frostedop.frostedopmod.listeners.FBlockListener;
+import net.frostedop.frostedopmod.commands.FCommandLoader;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import static net.frostedop.frostedopmod.config.ConfigEntry.T_AUTODAY;
 import static net.frostedop.frostedopmod.config.ConfigEntry.T_NO_RAIN;
 import net.frostedop.frostedopmod.config.ConfigFiles;
-import net.frostedop.frostedopmod.listeners.F_ChatListener;
-import net.frostedop.frostedopmod.listeners.F_MainListener;
-import net.frostedop.frostedopmod.listeners.F_PlayerListener;
-import net.frostedop.frostedopmod.listeners.F_RankListener;
+import net.frostedop.frostedopmod.listeners.FBanListener;
+import net.frostedop.frostedopmod.listeners.FChatListener;
+import net.frostedop.frostedopmod.listeners.FMainListener;
+import net.frostedop.frostedopmod.listeners.FPlayerListener;
+import net.frostedop.frostedopmod.listeners.FRankListener;
 import net.frostedop.frostedopmod.worlds.WorldManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -25,7 +25,6 @@ public class FrostedOPMod extends JavaPlugin
     public void onLoad()
     {
         plugin = this;
-        
         ConfigFiles.setup();
     }
 
@@ -34,28 +33,27 @@ public class FrostedOPMod extends JavaPlugin
     public void onEnable()
     {
         ConfigFiles.setup();
-
-        getLogger().log(Level.INFO, "---------------------");
-        getLogger().log(Level.INFO, "FrostedOPMod: R version: {0} authors: {1}", new Object[]
-        {
-            this.getDescription().getVersion(), this.getDescription().getAuthors()
-        });
-        getLogger().log(Level.INFO, "---------------------");
-        // start stuff
+        FLog.info("FrostedOPMod has been enabled!");
+        FLog.info("Created by: Savnith");
+        FLog.info("Plugin State:" + FUtil.NOT_STABLE);
+        
+        // Start Services
         this.weather();
         new WorldManager();
-        new F_BlockListener();
-        new F_BlockListener();
-        new F_ChatListener();
-        new F_MainListener();
-        new F_PlayerListener();
-        new F_RankListener();
-        new F_CommandLoader();
+        new FBlockListener();
+        new FBlockListener();
+        new FChatListener();
+        new FMainListener();
+        new FPlayerListener();
+        new FRankListener();
+        new FCommandLoader();
+        new FBanListener();
     }
 
     @Override
     public void onDisable()
     {
+        // do nothing as there is nothing to stop?
     }
 
     void weather()

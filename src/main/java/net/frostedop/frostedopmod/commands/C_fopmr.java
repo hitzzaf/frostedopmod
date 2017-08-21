@@ -1,15 +1,15 @@
 package net.frostedop.frostedopmod.commands;
 
 import java.util.Arrays;
-import net.frostedop.frostedopmod.FrostedOPMod;
+import net.frostedop.frostedopmod.FLog;
 import net.frostedop.frostedopmod.config.ConfigFiles;
 import net.frostedop.frostedopmod.ranks.Rank;
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class C_fopmr extends F_Command 
+public class C_fopmr extends FCommand 
 {
     
     public C_fopmr() 
@@ -38,18 +38,20 @@ public class C_fopmr extends F_Command
             ConfigFiles.getDonators().reloadConfig();
             ConfigFiles.getMConfig().reloadConfig();
             ConfigFiles.getPlayer().reloadConfig();
+            FLog.info("Plugin has been reloaded, by: " + sender.getName());
             sender.sendMessage(ChatColor.GRAY + "FrostedOPMod: Remastered has been reloaded!");
             return true;
         }
         
         if (args.length == 0) 
         {
-            sender.sendMessage(F_Util.color("&8&m----------------------"));
-            sender.sendMessage(ChatColor.BLUE + "FrostedOPMod: Remastered");
-            sender.sendMessage(ChatColor.BLUE + "Version: " + FrostedOPMod.plugin.getDescription().getVersion());
-            sender.sendMessage(ChatColor.BLUE + "Developers: " + FrostedOPMod.plugin.getDescription().getAuthors());
-            sender.sendMessage(ChatColor.BLUE + "Last developed by: " + "Sinkable [Savnith]");
-            sender.sendMessage(F_Util.color("&8&m----------------------"));
+            sender.sendMessage(FUtil.color("&8&m--------------------------------"));
+            sender.sendMessage(FUtil.color("&b&lThis is FrostedOPMod: Remastered!"));
+            sender.sendMessage(FUtil.color("&3&lVersion: &bBeta: 3.0.1, "));
+            sender.sendMessage(FUtil.color("&3&lPlugin State: &b" + FUtil.NOT_STABLE)); // Beta versions are unstable till it is fully finished.
+            sender.sendMessage(FUtil.color("&3&lMade by: &bSavnith"));
+            sender.sendMessage(FUtil.color("&8&m--------------------------------"));
+
             return true;
         }
         return true;

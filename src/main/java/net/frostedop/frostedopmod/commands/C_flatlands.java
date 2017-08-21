@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_flatlands extends F_Command {
+public class C_flatlands extends FCommand {
     
     public C_flatlands() 
     {
@@ -34,4 +34,4 @@ public class C_flatlands extends F_Command {
         //}
         return true;
     }  
-}
+} // welll this is broken?

@@ -1,6 +1,6 @@
 package net.frostedop.frostedopmod.worlds;
 
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import net.frostedop.frostedopmod.FrostedOPMod;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.ranks.Rank;
@@ -18,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class WorldManager implements Listener
 {
+    
     public static World getAdminWorld()
     {
         World world = Bukkit.getWorld("adminworld");
@@ -95,7 +96,7 @@ public class WorldManager implements Listener
             @Override
             public void run()
             {
-                F_Util.deleteFiles(flatlands.getWorldFolder());
+                FUtil.deleteFiles(flatlands.getWorldFolder());
                 Bukkit.getServer().setWhitelist(false);
             }
         }.runTaskLater(FrostedOPMod.plugin, 20L * 5L);

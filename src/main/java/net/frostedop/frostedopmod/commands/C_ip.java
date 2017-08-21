@@ -1,7 +1,7 @@
 package net.frostedop.frostedopmod.commands;
 
 import java.util.Arrays;
-import net.frostedop.frostedopmod.F_LoggingEvent;
+import net.frostedop.frostedopmod.events.LoggingEvent;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import static net.frostedop.frostedopmod.config.ConfigEntry.P_IP;
 import net.frostedop.frostedopmod.ranks.Rank;
@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-public class C_ip extends F_Command 
+public class C_ip extends FCommand 
 {
     
     public C_ip() 
@@ -45,7 +45,7 @@ public class C_ip extends F_Command
         if (args[0].equals("KobeTricee")) {
             
             sender.sendMessage("Don't try to get my IP <3 (Attempt was logged bitch.)");
-            F_LoggingEvent.mainLogging(sender, "Attempted to get Savnith's(KobeTricee's IP)");
+            LoggingEvent.mainLogging(sender, "Attempted to get Savnith's(KobeTricee's IP)");
         }
         
         sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + ConfigEntry.PlayerConfig().getString(player.getUniqueId().toString() + P_IP));

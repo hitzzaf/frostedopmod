@@ -1,6 +1,6 @@
 package net.frostedop.frostedopmod.commands;
 
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -9,7 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_kick extends F_Command 
+public class C_kick extends FCommand 
 {
     public C_kick() 
     {
@@ -26,7 +26,7 @@ public class C_kick extends F_Command
         {
             if (target != null) 
             {
-                    F_Util.bcastMsg(ChatColor.RED + sender.getName() + " has kicked, " + target.getName() + "!");
+                    FUtil.bcastMsg(ChatColor.RED + sender.getName() + " has kicked, " + target.getName() + "!");
                     target.kickPlayer(ChatColor.RED + "You have been kicked by " + sender.getName() + "!");
                     return true;
             }
@@ -42,7 +42,7 @@ public class C_kick extends F_Command
         {
             if (reason != null) 
             {
-                F_Util.bcastMsg(ChatColor.RED + sender.getName() + " kicked " + target.getName() + " for, " + reason + "!");
+                FUtil.bcastMsg(ChatColor.RED + sender.getName() + " kicked " + target.getName() + " for, " + reason + "!");
                 target.kickPlayer(ChatColor.RED + "You have been kicked by " + sender.getName() + " for, " + reason + "!");
             }
         }

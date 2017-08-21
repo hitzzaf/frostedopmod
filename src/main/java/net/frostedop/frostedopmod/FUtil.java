@@ -6,13 +6,15 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-public class F_Util 
+public class FUtil 
 {
     
     // Masterbuilders
     public static final List<String> MASTERBUILDERS = Arrays.asList("");
+    public static final String STABLE = "Stable";
+    public static final String NOT_STABLE = "Not Stable";
     
-    private F_Util() 
+    private FUtil() 
     {
         
     }

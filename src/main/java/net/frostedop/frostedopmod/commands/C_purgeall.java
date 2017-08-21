@@ -1,7 +1,7 @@
 package net.frostedop.frostedopmod.commands;
 
 import java.util.Collection;
-import static net.frostedop.frostedopmod.commands.F_Command.NO_PERM;
+import static net.frostedop.frostedopmod.commands.FCommand.NO_PERM;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.config.ConfigFiles;
 import net.frostedop.frostedopmod.ranks.Rank;
@@ -11,7 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_purgeall extends F_Command 
+public class C_purgeall extends FCommand 
 {
     public C_purgeall() 
     {

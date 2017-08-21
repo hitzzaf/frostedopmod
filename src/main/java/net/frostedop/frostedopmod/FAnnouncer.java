@@ -7,7 +7,7 @@ import static net.frostedop.frostedopmod.config.ConfigEntry.A_PREFIX;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class F_Announcer
+public class FAnnouncer
 {
     
   public static void Broadcast(Plugin pl) 
@@ -29,7 +29,7 @@ public class F_Announcer
         
         this.number += 1;
         
-        F_Util.bcastMsg(F_Util.color(prefix + " " + message_color + message));
+        FUtil.bcastMsg(FUtil.color(prefix + " " + message_color + message));
       }
     }.runTaskTimer(pl, 100L, 20 * pl.getConfig().getInt(A_DELAY));
   }

@@ -3,7 +3,7 @@ package net.frostedop.frostedopmod;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import org.bukkit.entity.Player;
 
-public class F_Player
+public class FPlayer
 {
     
     public static String getIPAddress(Player player) 

@@ -1,10 +1,10 @@
 package net.frostedop.frostedopmod.commands;
 
-import net.frostedop.frostedopmod.banning.BanningSystem;
-import static net.frostedop.frostedopmod.commands.F_Command.NO_PERM;
+import net.frostedop.frostedopmod.events.BanningEvent;
+import static net.frostedop.frostedopmod.commands.FCommand.NO_PERM;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.ranks.Rank;
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-public class C_gtfo extends F_Command 
+public class C_gtfo extends FCommand 
 {
     
     public C_gtfo() 
@@ -48,10 +48,10 @@ public class C_gtfo extends F_Command
                 return false;
             }
             
-            F_Util.bcastMsg(ChatColor.RED + target.getName() + " has been a VERY naughty, naughty boy. \nBanning: " + target.getName() + ", IP: " 
+            FUtil.bcastMsg(ChatColor.RED + target.getName() + " has been a VERY naughty, naughty boy. \nBanning: " + target.getName() + ", IP: " 
                     + ConfigEntry.PlayerConfig().getString(target.getUniqueId().toString() + ".ip"));
             target.kickPlayer(ChatColor.RED + "GTFO");
-            BanningSystem.addBan(target, sender);
+            BanningEvent.addBan(target, sender);
             Bukkit.getServer().dispatchCommand(sender, "co rb u:" + target.getName() + " t:24h r:global #silent");
         }
         
@@ -59,10 +59,10 @@ public class C_gtfo extends F_Command
         {
             if (reason != null) 
             {
-                F_Util.bcastMsg(ChatColor.RED + target.getName() + " has been a VERY naughty, naughty boy. \nBanning: " + target.getName() + ", IP: " 
+                FUtil.bcastMsg(ChatColor.RED + target.getName() + " has been a VERY naughty, naughty boy. \nBanning: " + target.getName() + ", IP: " 
                     + ConfigEntry.PlayerConfig().getString(target.getUniqueId().toString() + ".ip") + "\nReason: " + ChatColor.GOLD + reason);
                 target.kickPlayer(ChatColor.RED + "GTFO");
-                BanningSystem.addBan(target, sender, reason);
+                BanningEvent.addBan(target, sender, reason);
                 Bukkit.getServer().dispatchCommand(sender, "co rb u:" + target.getName() + " t:24h r:global #silent");
             }
         }

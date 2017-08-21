@@ -1,6 +1,6 @@
 package net.frostedop.frostedopmod.ranks;
 
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.config.ConfigFiles;
 import org.bukkit.entity.Player;
@@ -33,7 +33,7 @@ public class RankDisplay {
     }
     
     public static int rankJoin(Rank rank, Player player) {
-        return F_Util.bcastMsg(F_Util.color("&b" + player.getName() + " is " + rank.lmsg_pre + rank.rankcolor + " &o " + rank.lmsg + "&b!"));
+        return FUtil.bcastMsg(FUtil.color("&b" + player.getName() + " is " + rank.lmsg_pre + rank.rankcolor + " &o " + rank.lmsg + "&b!"));
     }
     
     public static void rankJoinTag(Rank rank, Player player) {

@@ -18,12 +18,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class F_PlayerListener implements Listener {
+public class FPlayerListener implements Listener {
     
     FrostedOPMod plugin;
     
     @SuppressWarnings("LeakingThisInConstructor")
-    public F_PlayerListener() {
+    public FPlayerListener() {
         Bukkit.getPluginManager().registerEvents(this, FrostedOPMod.plugin);
     }
     

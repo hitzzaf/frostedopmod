@@ -1,9 +1,9 @@
 package net.frostedop.frostedopmod.commands;
 
 import java.util.Arrays;
-import net.frostedop.frostedopmod.F_Util;
-import net.frostedop.frostedopmod.banning.BanningSystem;
-import static net.frostedop.frostedopmod.commands.F_Command.NO_PERM;
+import net.frostedop.frostedopmod.FUtil;
+import net.frostedop.frostedopmod.events.BanningEvent;
+import static net.frostedop.frostedopmod.commands.FCommand.NO_PERM;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.config.ConfigFiles;
 import net.frostedop.frostedopmod.ranks.Rank;
@@ -14,7 +14,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_glist extends F_Command 
+public class C_glist extends FCommand 
 {
     
     public C_glist() 
@@ -43,17 +43,17 @@ public class C_glist extends F_Command
         {
             if ("unban".equals(args[1]))
             {
-                F_Util.bcastMsg(sender.getName() + " - Unbanning " + target.getName() + " and IP: " 
+                FUtil.bcastMsg(sender.getName() + " - Unbanning " + target.getName() + " and IP: " 
                         + ConfigEntry.PlayerConfig().getString(target.getUniqueId().toString() + ".ip"), ChatColor.RED);
-                BanningSystem.removeBan((Player) target);
+                BanningEvent.removeBan((Player) target);
                 ConfigFiles.getBans().saveConfig();
             }
         
             if ("ban".equals(args[0]))
             {
-                F_Util.bcastMsg(sender.getName() + " - Banning " + target.getName() + " and IP: " 
+                FUtil.bcastMsg(sender.getName() + " - Banning " + target.getName() + " and IP: " 
                         + ConfigEntry.PlayerConfig().getString(target.getUniqueId().toString() + ".ip"), ChatColor.RED);
-                BanningSystem.addBan((Player) target, sender);
+                BanningEvent.addBan((Player) target, sender);
                 ConfigFiles.getBans().saveConfig();
             } 
         }

@@ -1,6 +1,6 @@
 package net.frostedop.frostedopmod.ranks;
 
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import org.bukkit.command.CommandSender;
 
 public class Rank {
@@ -39,7 +39,7 @@ public class Rank {
     }
     
     public static boolean isBuilder(CommandSender sender) {
-        if (!F_Util.MASTERBUILDERS.contains(sender.getName())) {
+        if (!FUtil.MASTERBUILDERS.contains(sender.getName())) {
             return false;
         }else {
             return true;

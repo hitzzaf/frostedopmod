@@ -1,13 +1,12 @@
-package net.frostedop.frostedopmod.banning;
+package net.frostedop.frostedopmod.events;
 
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.config.ConfigFiles;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class BanningSystem 
+public class BanningEvent 
 {
-    
     public static void addBan(Player player, CommandSender sender, String reason) 
     {
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".name", player.getName());

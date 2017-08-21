@@ -1,7 +1,7 @@
 package net.frostedop.frostedopmod.commands;
 
 import net.frostedop.frostedopmod.ranks.Rank;
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,7 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_smite extends F_Command 
+public class C_smite extends FCommand 
 {
     public C_smite() 
     {
@@ -54,16 +54,16 @@ public class C_smite extends F_Command
 
     public static void smite(Player player, CommandSender sender, String reason) 
     {
-        F_Util.bcastMsg(player.getName() + " has been a naughty, naughty boy.", ChatColor.RED);
+        FUtil.bcastMsg(player.getName() + " has been a naughty, naughty boy.", ChatColor.RED);
 
         if (reason != null) 
         {
-            F_Util.bcastMsg("Reason: " + reason + " (" + sender.getName() + ")", ChatColor.RED);
+            FUtil.bcastMsg("Reason: " + reason + " (" + sender.getName() + ")", ChatColor.RED);
             player.sendMessage(ChatColor.RED + "You have been smited for, " + reason + " by, " + sender.getName());
         }
         
         else {
-            F_Util.bcastMsg("Smited by: " + sender.getName(), ChatColor.RED);
+            FUtil.bcastMsg("Smited by: " + sender.getName(), ChatColor.RED);
             player.sendMessage(ChatColor.RED + "You have been smited by, " + sender.getName());
         }
 

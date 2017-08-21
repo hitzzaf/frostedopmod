@@ -16,11 +16,11 @@ import org.bukkit.command.PluginCommand;
 
 import static org.bukkit.Bukkit.*;
 
-public class F_CommandLoader 
+public class FCommandLoader 
 {
     private static CommandMap cmap = getCommandMap();
 
-    public F_CommandLoader() 
+    public FCommandLoader() 
     {
         registerCommands();
     }
@@ -45,7 +45,7 @@ public class F_CommandLoader
                         {
                             Class<?> commandClass = Class.forName("net.frostedop.frostedopmod.commands." + matcher.group(1));
                             Constructor construct = commandClass.getConstructor();
-                            F_Command command = (F_Command) construct.newInstance();
+                            FCommand command = (FCommand) construct.newInstance();
                             command.register();
                         } catch (InvocationTargetException ex) {
                             broadcastMessage("" + ex);

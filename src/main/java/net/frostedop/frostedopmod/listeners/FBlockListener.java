@@ -9,12 +9,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class F_BlockListener implements Listener {
+public class FBlockListener implements Listener {
     
     FrostedOPMod plugin;
     
     @SuppressWarnings("LeakingThisInConstructor")
-    public F_BlockListener() {
+    public FBlockListener() {
         Bukkit.getPluginManager().registerEvents(this, FrostedOPMod.plugin);
     }
     

@@ -13,7 +13,7 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public abstract class F_Command implements CommandExecutor, TabExecutor 
+public abstract class FCommand implements CommandExecutor, TabExecutor 
 {
     protected CommandSender sender;
     //
@@ -58,27 +58,27 @@ public abstract class F_Command implements CommandExecutor, TabExecutor
 
     protected static CommandMap cmap;
 
-    public F_Command(String command)
+    public FCommand(String command)
     {
         this(command, null, null, null, null);
     }
 
-    public F_Command(String command, String usage)
+    public FCommand(String command, String usage)
     {
         this(command, usage, null, null, null);
     }
 
-    public F_Command(String command, String usage, String description)
+    public FCommand(String command, String usage, String description)
     {
         this(command, usage, description, null);
     }
 
-    public F_Command(String command, String usage, String description, List<String> aliases)
+    public FCommand(String command, String usage, String description, List<String> aliases)
     {
         this(command, usage, description, null, aliases);
     }
 
-    public F_Command(String command, String usage, String description, String permissionMessage, List<String> aliases)
+    public FCommand(String command, String usage, String description, String permissionMessage, List<String> aliases)
     {
         this.command = command.toLowerCase();
         this.usage = usage;
@@ -132,14 +132,14 @@ public abstract class F_Command implements CommandExecutor, TabExecutor
     private final class ReflectCommand extends Command
     {
 
-        private F_Command exe = null;
+        private FCommand exe = null;
 
         protected ReflectCommand(String command)
         {
             super(command);
         }
 
-        public void setExecutor(F_Command exe)
+        public void setExecutor(FCommand exe)
         {
             this.exe = exe;
         }

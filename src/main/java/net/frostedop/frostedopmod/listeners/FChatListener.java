@@ -1,6 +1,6 @@
 package net.frostedop.frostedopmod.listeners;
 
-import static net.frostedop.frostedopmod.F_Util.color;
+import static net.frostedop.frostedopmod.FUtil.color;
 import net.frostedop.frostedopmod.FrostedOPMod;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import static net.frostedop.frostedopmod.config.ConfigEntry.P_CHATCOLOR;
@@ -14,13 +14,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class F_ChatListener implements Listener 
+public class FChatListener implements Listener 
 {
     
     FrostedOPMod plugin;
     
     @SuppressWarnings("LeakingThisInConstructor")
-    public F_ChatListener() 
+    public FChatListener() 
     {
         Bukkit.getPluginManager().registerEvents(this, FrostedOPMod.plugin);
     }

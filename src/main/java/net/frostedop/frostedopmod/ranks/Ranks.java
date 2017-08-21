@@ -1,6 +1,6 @@
 package net.frostedop.frostedopmod.ranks;
 
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import static net.frostedop.frostedopmod.config.ConfigEntry.P_NAME;
 import org.bukkit.command.CommandSender;
@@ -90,7 +90,7 @@ public class Ranks {
         
         final Player player = (Player) sender;
         
-        return F_Util.MASTERBUILDERS.contains(player.getName());
+        return FUtil.MASTERBUILDERS.contains(player.getName());
     }
     
     // player section

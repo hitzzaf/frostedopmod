@@ -2,14 +2,14 @@ package net.frostedop.frostedopmod.commands;
 
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import net.frostedop.frostedopmod.config.ConfigFiles;
-import net.frostedop.frostedopmod.F_Util;
+import net.frostedop.frostedopmod.FUtil;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_tag extends F_Command 
+public class C_tag extends FCommand 
 {
     public C_tag() 
     {
@@ -41,7 +41,7 @@ public class C_tag extends F_Command
                 
                 ConfigEntry.PlayerConfig().set(player.getUniqueId().toString() + ".tag", string);
                 ConfigFiles.getPlayer().saveConfig();
-                sender.sendMessage(ChatColor.GRAY + "Your tag was set to '" + F_Util.color(string) + ChatColor.GRAY + "'!");
+                sender.sendMessage(ChatColor.GRAY + "Your tag was set to '" + FUtil.color(string) + ChatColor.GRAY + "'!");
                 return true;
             }
         }
