@@ -14,49 +14,41 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_glist extends FCommand 
-{
-    
-    public C_glist() 
-    {
+public class C_glist extends FCommand {
+
+    public C_glist() {
         super("glist", "/glist [unban, ban] <playername>", "Unban someone or ban someone", Arrays.asList("alist"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
-    {
-        
-        if (!Rank.isAdmin(sender)) 
-        {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
-        if (args.length == 0) 
-        {
+
+        if (args.length == 0) {
             return false;
         }
-        
+
         OfflinePlayer target = Bukkit.getServer().getOfflinePlayer(args[0]);
-        
-        if (args.length == 1) 
-        {
-            if ("unban".equals(args[1]))
-            {
-                FUtil.bcastMsg(sender.getName() + " - Unbanning " + target.getName() + " and IP: " 
+
+        if (args.length == 1) {
+            if ("unban".equals(args[1])) {
+                FUtil.bcastMsg(sender.getName() + " - Unbanning " + target.getName() + " and IP: "
                         + ConfigEntry.PlayerConfig().getString(target.getUniqueId().toString() + ".ip"), ChatColor.RED);
                 BanningEvent.removeBan((Player) target);
                 ConfigFiles.getBans().saveConfig();
             }
-        
-            if ("ban".equals(args[0]))
-            {
-                FUtil.bcastMsg(sender.getName() + " - Banning " + target.getName() + " and IP: " 
+
+            if ("ban".equals(args[0])) {
+                FUtil.bcastMsg(sender.getName() + " - Banning " + target.getName() + " and IP: "
                         + ConfigEntry.PlayerConfig().getString(target.getUniqueId().toString() + ".ip"), ChatColor.RED);
                 BanningEvent.addBan((Player) target, sender);
                 ConfigFiles.getBans().saveConfig();
-            } 
+            }
         }
         return true;
-    } 
+    }
 }

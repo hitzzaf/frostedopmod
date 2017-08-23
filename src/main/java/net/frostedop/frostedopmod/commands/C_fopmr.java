@@ -9,31 +9,25 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class C_fopmr extends FCommand 
-{
-    
-    public C_fopmr() 
-    {
+public class C_fopmr extends FCommand {
+
+    public C_fopmr() {
         super("fopmr", "/fopmr <reload>", "Main CMD ;D", Arrays.asList("fopm", "frostedopmodr"));
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
-    { 
-        if (args.length == 1) 
-        {
-            
-            if (!args[0].equals("reload")) 
-            {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (args.length == 1) {
+
+            if (!args[0].equals("reload")) {
                 return false;
             }
 
-            if (!Rank.isAdmin(sender)) 
-            {
+            if (!Rank.isAdmin(sender)) {
                 sender.sendMessage(NO_PERM);
                 return true;
             }
-            
+
             ConfigFiles.getAdmins().reloadConfig();
             ConfigFiles.getDonators().reloadConfig();
             ConfigFiles.getMConfig().reloadConfig();
@@ -42,9 +36,8 @@ public class C_fopmr extends FCommand
             sender.sendMessage(ChatColor.GRAY + "FrostedOPMod: Remastered has been reloaded!");
             return true;
         }
-        
-        if (args.length == 0) 
-        {
+
+        if (args.length == 0) {
             sender.sendMessage(FUtil.color("&8&m--------------------------------"));
             sender.sendMessage(FUtil.color("&b&lThis is FrostedOPMod: Remastered!"));
             sender.sendMessage(FUtil.color("&3&lVersion: &bBeta: 3.0.1, "));
@@ -57,4 +50,3 @@ public class C_fopmr extends FCommand
         return true;
     }
 }
-

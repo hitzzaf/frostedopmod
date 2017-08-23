@@ -8,41 +8,35 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import net.frostedop.frostedopmod.FLog;
 import net.frostedop.frostedopmod.FrostedOPMod;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.PluginCommand;
 
 import static org.bukkit.Bukkit.*;
 
-public class FCommandLoader 
-{
+public class FCommandLoader {
+
     private static CommandMap cmap = getCommandMap();
 
-    public FCommandLoader() 
-    {
+    public FCommandLoader() {
         registerCommands();
     }
 
-    public static void registerCommands() 
-    {
-        try 
-        {
+    @SuppressWarnings("UseSpecificCatch")
+    public static void registerCommands() {
+        try {
             Pattern PATTERN = Pattern.compile("net/frostedop/frostedopmod/commands/(C_[^\\$]+)\\.class");
             CodeSource codeSource = FrostedOPMod.class.getProtectionDomain().getCodeSource();
-            if (codeSource != null) 
-            {
+            if (codeSource != null) {
                 ZipInputStream zip = new ZipInputStream(codeSource.getLocation().openStream());
                 ZipEntry zipEntry;
-                while ((zipEntry = zip.getNextEntry()) != null) 
-                {
+                while ((zipEntry = zip.getNextEntry()) != null) {
                     String entryName = zipEntry.getName();
                     Matcher matcher = PATTERN.matcher(entryName);
-                    if (matcher.find()) 
-                    {
-                        try 
-                        {
+                    if (matcher.find()) {
+                        try {
                             Class<?> commandClass = Class.forName("net.frostedop.frostedopmod.commands." + matcher.group(1));
                             Constructor construct = commandClass.getConstructor();
                             FCommand command = (FCommand) construct.newInstance();
@@ -75,12 +69,11 @@ public class FCommandLoader
                 cmap = (CommandMap) f.get(getServer());
                 return getCommandMap();
             } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }catch (IllegalAccessException e) {
-                e.printStackTrace();
+                FLog.severe(e);
+            } catch (IllegalAccessException e) {
+                FLog.severe(e);
             }
-        }
-        else if (cmap != null) {
+        } else if (cmap != null) {
             return cmap;
         }
         return getCommandMap();

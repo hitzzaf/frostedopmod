@@ -5,10 +5,9 @@ import net.frostedop.frostedopmod.config.ConfigFiles;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class BanningEvent 
-{
-    public static void addBan(Player player, CommandSender sender, String reason) 
-    {
+public class BanningEvent {
+
+    public static void addBan(Player player, CommandSender sender, String reason) {
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".name", player.getName());
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".ip", player.getAddress().getHostString());
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".banner", sender.getName());
@@ -16,9 +15,8 @@ public class BanningEvent
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".isbanned", true);
         ConfigFiles.getBans().saveConfig();
     }
-    
-    public static void addBan(Player player, CommandSender sender) 
-    {
+
+    public static void addBan(Player player, CommandSender sender) {
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".name", player.getName());
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".ip", player.getAddress().getHostString());
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".banner", sender.getName());
@@ -26,25 +24,21 @@ public class BanningEvent
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".isbanned", true);
         ConfigFiles.getBans().saveConfig();
     }
-    
-    public static void removeBan(Player player) 
-    {
+
+    public static void removeBan(Player player) {
         ConfigEntry.BansConfig().set(player.getUniqueId().toString() + ".isbanned", false);
         ConfigFiles.getBans().saveConfig();
     }
-    
-    public static String getBanReason(Player player) 
-    {
+
+    public static String getBanReason(Player player) {
         return ConfigEntry.BansConfig().getString(player.getUniqueId().toString() + ".reason");
     }
-    
-    public static String getBanner(Player player) 
-    {
+
+    public static String getBanner(Player player) {
         return ConfigEntry.BansConfig().getString(player.getUniqueId().toString() + ".banner");
     }
-    
-    public static boolean isBanned(Player player) 
-    {
+
+    public static boolean isBanned(Player player) {
         return ConfigEntry.BansConfig().getBoolean(player.getUniqueId().toString() + ".isbanned");
     }
 }

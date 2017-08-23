@@ -11,36 +11,33 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
-public class DoubleJump implements Listener 
-{
+public class DoubleJump implements Listener {
+
     FrostedOPMod plugin;
-    
+
     @SuppressWarnings("LeakingThisInConstructor")
-    public DoubleJump() 
-    {
+    public DoubleJump() {
         Bukkit.getPluginManager().registerEvents(this, FrostedOPMod.plugin);
     }
-    
+
     @EventHandler
-    public void onPlayerToggleFlight(PlayerToggleFlightEvent event) 
-    {
-        if (ConfigEntry.MainConfig().getBoolean("fun.djump"))
-        {
+    public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
+        if (ConfigEntry.MainConfig().getBoolean("fun.djump")) {
             Player player = event.getPlayer();
-            if (player.getGameMode() == GameMode.CREATIVE) return;
-        
+            if (player.getGameMode() == GameMode.CREATIVE) {
+                return;
+            }
+
             event.setCancelled(true);
             player.setAllowFlight(false);
             player.setFlying(false);
             player.setVelocity(player.getLocation().getDirection().multiply(1.5).setY(1));
         }
     }
-    
+
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) 
-    {
-        if (ConfigEntry.MainConfig().getBoolean("fun.djump"))
-        {
+    public void onPlayerMove(PlayerMoveEvent event) {
+        if (ConfigEntry.MainConfig().getBoolean("fun.djump")) {
             Player player = event.getPlayer();
             if ((player.getGameMode() != GameMode.CREATIVE) && (player.getLocation().subtract(0, 1, 0).getBlock().getType() != Material.AIR) && (!player.isFlying())) {
                 player.setAllowFlight(true);

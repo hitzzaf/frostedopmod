@@ -17,26 +17,24 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class FrostedOPMod extends JavaPlugin
-{    
+public class FrostedOPMod extends JavaPlugin {
+
     public static FrostedOPMod plugin;
 
     @Override
-    public void onLoad()
-    {
+    public void onLoad() {
         plugin = this;
         ConfigFiles.setup();
     }
 
     @Override
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
-    public void onEnable()
-    {
+    public void onEnable() {
         ConfigFiles.setup();
         FLog.info("FrostedOPMod has been enabled!");
         FLog.info("Created by: Savnith");
         FLog.info("Plugin State:" + FUtil.NOT_STABLE);
-        
+
         // Start Services
         this.weather();
         new WorldManager();
@@ -51,34 +49,24 @@ public class FrostedOPMod extends JavaPlugin
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
         // do nothing as there is nothing to stop?
     }
 
-    void weather()
-    {
-        for (final Player all : Bukkit.getOnlinePlayers())
-        {
-            if (ConfigEntry.MainConfig().getBoolean(T_NO_RAIN))
-            {
-                new BukkitRunnable()
-                {
-                    public void run()
-                    {
+    void weather() {
+        for (final Player all : Bukkit.getOnlinePlayers()) {
+            if (ConfigEntry.MainConfig().getBoolean(T_NO_RAIN)) {
+                new BukkitRunnable() {
+                    public void run() {
                         all.getWorld().setWeatherDuration(0);
                         all.getWorld().setThunderDuration(0);
                     }
                 }.runTaskTimer(this, 0L, 1L);
             }
-            if (ConfigEntry.MainConfig().getBoolean(T_AUTODAY))
-            {
-                new BukkitRunnable()
-                {
-                    public void run()
-                    {
-                        for (Player all : Bukkit.getOnlinePlayers())
-                        {
+            if (ConfigEntry.MainConfig().getBoolean(T_AUTODAY)) {
+                new BukkitRunnable() {
+                    public void run() {
+                        for (Player all : Bukkit.getOnlinePlayers()) {
                             all.getWorld().setTime(600L);
                         }
                     }

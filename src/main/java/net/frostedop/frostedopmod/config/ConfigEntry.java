@@ -3,7 +3,7 @@ package net.frostedop.frostedopmod.config;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigEntry {
-    
+
     public static final String S_NAME = "server.name";
     public static final String S_MOTD_L1 = "server.motd-line-1";
     public static final String S_MOTD_L2 = "server.motd-line-2";
@@ -28,39 +28,32 @@ public class ConfigEntry {
     public static final String P_CMDSBLOCKED = ".cmdsblcked";
     public static final String P_FROZEN = ".frozen";
     public static final String P_TAG = ".tag";
-    
-    public static final FileConfiguration PlayerConfig() 
-    {
+
+    public static final FileConfiguration PlayerConfig() {
         return ConfigFiles.getPlayer().getConfig();
     }
-    
-    public static final FileConfiguration BansConfig() 
-    {
+
+    public static final FileConfiguration BansConfig() {
         return ConfigFiles.getBans().getConfig();
     }
-    
-    public static final FileConfiguration PermbanConfig() 
-    {
+
+    public static final FileConfiguration PermbanConfig() {
         return ConfigFiles.getPermbans().getConfig();
     }
-    
-    public static final FileConfiguration MainConfig() 
-    {
+
+    public static final FileConfiguration MainConfig() {
         return ConfigFiles.getMConfig().getConfig();
     }
-    
-    public static final FileConfiguration AdminConfig() 
-    {
+
+    public static final FileConfiguration AdminConfig() {
         return ConfigFiles.getAdmins().getConfig();
     }
-    
-    public static final FileConfiguration DonatorConfig() 
-    {
+
+    public static final FileConfiguration DonatorConfig() {
         return ConfigFiles.getDonators().getConfig();
     }
-    
-    public static final FileConfiguration LogConfig()
-    {
+
+    public static final FileConfiguration LogConfig() {
         return ConfigFiles.getLogs().getConfig();
     }
 }

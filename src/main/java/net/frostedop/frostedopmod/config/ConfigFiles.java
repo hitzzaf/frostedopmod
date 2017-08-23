@@ -2,8 +2,8 @@ package net.frostedop.frostedopmod.config;
 
 import net.frostedop.frostedopmod.FrostedOPMod;
 
-public class ConfigFiles
-{
+public class ConfigFiles {
+
     private static Config players;
     private static Config bans;
     private static Config permbans;
@@ -12,12 +12,10 @@ public class ConfigFiles
     private static Config donators;
     private static Config logs;
 
-    private ConfigFiles()
-    {
+    private ConfigFiles() {
     }
 
-    public static void setup()
-    {
+    public static void setup() {
         bans = new Config(FrostedOPMod.plugin, "bans.yml");
         bans.saveDefaultConfig();
         permbans = new Config(FrostedOPMod.plugin, "permbans.yml");
@@ -34,38 +32,31 @@ public class ConfigFiles
         logs.saveDefaultConfig();
     }
 
-    public static Config getLogs()
-    {
+    public static Config getLogs() {
         return logs;
     }
 
-    public static Config getPlayer()
-    {
+    public static Config getPlayer() {
         return players;
     }
 
-    public static Config getBans()
-    {
+    public static Config getBans() {
         return bans;
     }
 
-    public static Config getPermbans()
-    {
+    public static Config getPermbans() {
         return permbans;
     }
 
-    public static Config getAdmins()
-    {
+    public static Config getAdmins() {
         return admins;
     }
 
-    public static Config getDonators()
-    {
+    public static Config getDonators() {
         return donators;
     }
 
-    public static Config getMConfig()
-    {
+    public static Config getMConfig() {
         return mainconfig;
     }
 }

@@ -11,31 +11,25 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_rawsay extends FCommand 
-{
-    
-    public C_rawsay() 
-    {
+public class C_rawsay extends FCommand {
+
+    public C_rawsay() {
         super("rawsay", "/rawsay <message>", "raw msg");
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
-    {
-        
-        if (!Rank.isSeniorAdmin(sender)) 
-        {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        if (!Rank.isSeniorAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return false;
         }
-        
+
         Collection<Player> online = (Collection<Player>) Bukkit.getOnlinePlayers();
         final String message = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
-        
-        if (args.length == 0) 
-        {
-            for (Player player : Bukkit.getOnlinePlayers())
-            {
+
+        if (args.length == 0) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
                 player.sendMessage(FUtil.color(message));
             }
             return true;

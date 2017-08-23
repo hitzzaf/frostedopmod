@@ -9,18 +9,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("ALL")
-public class C_admin extends FCommand
-{
-    public C_admin() 
-    {
+public class C_admin extends FCommand {
+
+    public C_admin() {
         super("admin", "/admin [add - remove - setrank] <player> [rank]", "Main admin cmd");
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
-    {
-        if (args.length < 1)
-        {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (args.length < 1) {
             return false;
         }
 
@@ -57,15 +54,13 @@ public class C_admin extends FCommand
         }
         return true;
     }
-    
-    public void add(Player player, CommandSender sender) 
-    {
-        
+
+    public void add(Player player, CommandSender sender) {
+
         String UUID = player.getUniqueId().toString();
-        
-        if (!ConfigEntry.AdminConfig().contains(UUID)) 
-        {
-            
+
+        if (!ConfigEntry.AdminConfig().contains(UUID)) {
+
             adminConfig().set(UUID + ".name", player.getName().toLowerCase());
             adminConfig().set(UUID + ".ip", player.getAddress().getHostString());
             adminConfig().set(UUID + ".shoutcolor", "&d");
@@ -79,48 +74,44 @@ public class C_admin extends FCommand
             adminConfig().set(UUID + ".developer", false);
             adminConfig().set(UUID + ".owner", false);
             ConfigFiles.getAdmins().saveConfig();
-            
+
             bcastMsg(ChatColor.RED + sender.getName() + " adding " + player.getName() + " to the admin list!");
-        }else {
+        } else {
             adminConfig().set(UUID + ".isactive", true);
             adminConfig().set(UUID + ".isadmin", true);
             ConfigFiles.getAdmins().saveConfig();
-            
+
             bcastMsg(ChatColor.RED + sender.getName() + " Re-adding " + player.getName() + " to the admin list!");
         }
     }
-    
-    public void setTelnet(Player player, CommandSender sender) 
-    {
+
+    public void setTelnet(Player player, CommandSender sender) {
         String UUID = player.getUniqueId().toString();
-        
-        if (!ConfigEntry.AdminConfig().contains(UUID)) 
-        {
+
+        if (!ConfigEntry.AdminConfig().contains(UUID)) {
             sender.sendMessage(ChatColor.GRAY + "Player must be super admin to add them to telnet!");
-        }else {
+        } else {
             adminConfig().set(UUID + ".name", player.getName().toLowerCase());
             adminConfig().set(UUID + ".ip", player.getAddress().getHostString());
             adminConfig().set(UUID + ".istelnet", true);
             ConfigFiles.getAdmins().saveConfig();
-            
+
             bcastMsg(ChatColor.RED + sender.getName() + " setting " + player.getName() + "'s rank to Telnet Admin!");
         }
     }
-    
-    public void setSenior(Player player, CommandSender sender) 
-    {
+
+    public void setSenior(Player player, CommandSender sender) {
         String UUID = player.getUniqueId().toString();
-        
-        if (!ConfigEntry.AdminConfig().contains(UUID)) 
-        {
+
+        if (!ConfigEntry.AdminConfig().contains(UUID)) {
             sender.sendMessage(ChatColor.GRAY + "Player must be super admin to add them to telnet!");
-        }else {
+        } else {
             adminConfig().set(UUID + ".name", player.getName().toLowerCase());
             adminConfig().set(UUID + ".ip", player.getAddress().getHostString());
             adminConfig().set(UUID + ".istelnet", true);
             adminConfig().set(UUID + ".issenior", true);
             ConfigFiles.getAdmins().saveConfig();
-            
+
             bcastMsg(ChatColor.RED + sender.getName() + " setting " + player.getName() + "'s rank to Senior Admin!");
         }
     }

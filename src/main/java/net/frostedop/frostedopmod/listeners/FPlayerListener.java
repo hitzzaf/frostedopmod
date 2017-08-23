@@ -19,19 +19,19 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class FPlayerListener implements Listener {
-    
+
     FrostedOPMod plugin;
-    
+
     @SuppressWarnings("LeakingThisInConstructor")
     public FPlayerListener() {
         Bukkit.getPluginManager().registerEvents(this, FrostedOPMod.plugin);
     }
-    
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         String UUID = event.getPlayer().getUniqueId().toString();
         FileConfiguration PlayerConfig = ConfigFiles.getPlayer().getConfig();
-        
+
         if (!PlayerConfig.contains(UUID)) {
             PlayerConfig.set(UUID + P_NAME, event.getPlayer().getName().toLowerCase());
             PlayerConfig.set(UUID + P_IP, event.getPlayer().getAddress().getHostString());
@@ -41,30 +41,28 @@ public class FPlayerListener implements Listener {
             PlayerConfig.set(UUID + P_CMDSBLOCKED, false);
             PlayerConfig.set(UUID + P_CHATCOLOR, "&7");
             ConfigFiles.getPlayer().saveConfig();
-        }
-        else if (PlayerConfig.contains(UUID)) {
+        } else if (PlayerConfig.contains(UUID)) {
             PlayerConfig.set(UUID + P_NAME, event.getPlayer().getName().toLowerCase());
             PlayerConfig.set(UUID + P_IP, event.getPlayer().getAddress().getHostString());
             ConfigFiles.getPlayer().saveConfig();
         }
-        
-        for(String uuid : PlayerConfig.getKeys(false))
-        {
+
+        for (String uuid : PlayerConfig.getKeys(false)) {
             if (!PlayerConfig.getString(uuid + P_IP).contains(event.getPlayer().getAddress().getHostString())) {
                 ConfigEntry.PlayerConfig().set(UUID + ".isimposter", true);
             }
         }
-        
+
         if (Ranks.isImposter(event.getPlayer())) {
             ConfigEntry.PlayerConfig().set(UUID + P_FROZEN, true);
             ConfigEntry.PlayerConfig().set(UUID + P_CMDSBLOCKED, true);
             ConfigFiles.getPlayer().saveConfig();
         }
     }
-    
+
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        
+
         if (Ranks.isImposter(event.getPlayer())) {
             ConfigEntry.PlayerConfig().set(event.getPlayer().getUniqueId().toString() + P_FROZEN, false);
             ConfigEntry.PlayerConfig().set(event.getPlayer().getUniqueId().toString() + P_CMDSBLOCKED, false);

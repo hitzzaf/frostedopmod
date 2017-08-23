@@ -8,20 +8,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class C_flatlands extends FCommand {
-    
-    public C_flatlands() 
-    {
+
+    public C_flatlands() {
         super("flatlands", "/flatlands", "Go to the flatlands!");
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) { 
-        
-        
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
         if (isConsole()) {
             sender.sendMessage("You must be ingame to use this command!");
         }
-        
+
         //if (((Player) sender).getWorld() == WorldManager.getFlatlands()) {
         //    ((Player) sender).teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
         //    sender.sendMessage("Welcome to the main world!" + ChatColor.GRAY);
@@ -33,5 +31,5 @@ public class C_flatlands extends FCommand {
         //    sender.sendMessage("The flatlands can not be accessable atm, if it doesn't work after a few mins plese contact Savnith(KobeTricee) on discord or In-game!");
         //}
         return true;
-    }  
+    }
 } // welll this is broken?

@@ -12,38 +12,32 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class C_smite extends FCommand 
-{
-    public C_smite() 
-    {
+public class C_smite extends FCommand {
+
+    public C_smite() {
         super("smite", "/smite <player> [reason]", "Smite a player!");
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
-    {
-        if (!Rank.isAdmin(sender)) 
-        {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return false;
         }
-        
-        if (args.length < 1) 
-        {
+
+        if (args.length < 1) {
             return false;
         }
 
         final Player player = Bukkit.getServer().getPlayer(args[0]);
 
         String reason = null;
-        
-        if (args.length > 1) 
-        {
+
+        if (args.length > 1) {
             reason = StringUtils.join(args, " ", 1, args.length);
         }
 
-        if (player == null) 
-        {
+        if (player == null) {
             sender.sendMessage(PLAYER_NOT_FOUND);
             return true;
         }
@@ -52,17 +46,13 @@ public class C_smite extends FCommand
         return true;
     }
 
-    public static void smite(Player player, CommandSender sender, String reason) 
-    {
+    public static void smite(Player player, CommandSender sender, String reason) {
         FUtil.bcastMsg(player.getName() + " has been a naughty, naughty boy.", ChatColor.RED);
 
-        if (reason != null) 
-        {
+        if (reason != null) {
             FUtil.bcastMsg("Reason: " + reason + " (" + sender.getName() + ")", ChatColor.RED);
             player.sendMessage(ChatColor.RED + "You have been smited for, " + reason + " by, " + sender.getName());
-        }
-        
-        else {
+        } else {
             FUtil.bcastMsg("Smited by: " + sender.getName(), ChatColor.RED);
             player.sendMessage(ChatColor.RED + "You have been smited by, " + sender.getName());
         }
@@ -79,7 +69,7 @@ public class C_smite extends FCommand
                 world.strikeLightning(strike_pos);
             }
         }
-        
+
         player.setHealth(0.0);
     }
 }
