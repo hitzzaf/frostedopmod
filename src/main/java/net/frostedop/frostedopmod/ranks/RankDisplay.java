@@ -16,6 +16,7 @@ public class RankDisplay {
         EXECUTIVE("a", "", "Executive", "&e"),
         DEVELOPER("a", "Developer", "Dev", "&5"),
         MASTER_BUILDER("a", "Master Builder", "Master Builder", "&6"),
+        HITZZ("the", "Hitzz", "Hitzz", "&a"),
         OWNER("the", "Owner", "Owner", "&9");
 
         public final String lmsg_pre;
