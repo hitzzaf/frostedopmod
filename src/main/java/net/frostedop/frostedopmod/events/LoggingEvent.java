@@ -5,6 +5,7 @@ import net.frostedop.frostedopmod.config.ConfigFiles;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+// Going to be removed.
 public class LoggingEvent {
 
     public static void mainLogging(CommandSender sender, String reason) {

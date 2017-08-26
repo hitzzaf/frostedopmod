@@ -34,12 +34,11 @@ public class FUtil {
         if (path.exists()) {
             File files[] = path.listFiles();
 
-            for (int i = 0; i < files.length; i++) {
-
-                if (files[i].isDirectory()) {
-                    deleteFiles(files[i]);
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    deleteFiles(file);
                 } else {
-                    files[i].delete();
+                    file.delete();
                 }
             }
         }

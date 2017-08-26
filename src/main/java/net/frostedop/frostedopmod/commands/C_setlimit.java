@@ -8,7 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 /**
  *
@@ -30,10 +29,12 @@ public class C_setlimit extends FCommand {
         }
 
         if (args.length == 0) {
-            for (final Player player : Bukkit.getOnlinePlayers()) {
+            Bukkit.getOnlinePlayers().stream().map((player) -> {
                 player.sendMessage(ChatColor.RED + sender.getName() + " - " + "Setting everyone's Worldedit block modification limit to 10000.");
+                return player;
+            }).forEach((player) -> {
                 WorldEditBridge.setLimit(player, 10000);
-            }
+            });
         }
         return true;
     }

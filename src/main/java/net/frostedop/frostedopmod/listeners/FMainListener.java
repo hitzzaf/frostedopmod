@@ -49,9 +49,9 @@ public class FMainListener implements Listener {
         }
 
         if (ConfigEntry.AdminConfig().getBoolean(event.getPlayer().getUniqueId().toString() + ".cmdspy")) {
-            for (Player player : Bukkit.getOnlinePlayers()) {
+            Bukkit.getOnlinePlayers().stream().forEach((player) -> {
                 player.sendMessage(event.getPlayer() + ": " + event.getMessage().toLowerCase());
-            }
+            });
         }
     }
 

@@ -70,10 +70,12 @@ public class WorldManager implements Listener {
 
     public static void wipeFlatlands() {
         final World flatlands = getFlatlands();
-        for (Player player : flatlands.getPlayers()) {
+        flatlands.getPlayers().stream().map((player) -> {
             player.setOp(false);
+            return player;
+        }).forEach((player) -> {
             player.setWhitelisted(false);
-        }
+        });
         Bukkit.getServer().setWhitelist(true);
         unloadWorld(flatlands);
         new BukkitRunnable() {
@@ -88,14 +90,14 @@ public class WorldManager implements Listener {
 
     public static void unloadWorld(World world) {
         if (world != null) {
-            for (Player player : world.getPlayers()) {
-                for (World newworld : Bukkit.getWorlds()) {
-                    if (world != newworld) {
-                        player.teleport(newworld.getSpawnLocation());
-                    }
-                }
+            world.getPlayers().stream().map((player) -> {
+                Bukkit.getWorlds().stream().filter((newworld) -> (world != newworld)).forEach((newworld) -> {
+                    player.teleport(newworld.getSpawnLocation());
+                });
+                return player;
+            }).forEach((player) -> {
                 player.kickPlayer("The world you are in is being unloaded.");
-            }
+            });
             Bukkit.getServer().unloadWorld(world, false);
         }
     }

@@ -8,7 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class C_purgeall extends FCommand {
 
@@ -23,13 +22,21 @@ public class C_purgeall extends FCommand {
             return true;
         }
 
-        for (Player target : Bukkit.getOnlinePlayers()) {
+        Bukkit.getOnlinePlayers().stream().map((target) -> {
             target.sendMessage(ChatColor.RED + sender.getName() + " - Purging all player data");
+            return target;
+        }).map((target) -> {
             ConfigEntry.PlayerConfig().set(target.getUniqueId().toString() + ".muted", false);
+            return target;
+        }).map((target) -> {
             ConfigEntry.PlayerConfig().set(target.getUniqueId().toString() + ".frozen", false);
+            return target;
+        }).map((target) -> {
             ConfigEntry.PlayerConfig().set(target.getUniqueId().toString() + ".cmdsblcked", false);
+            return target;
+        }).forEach((_item) -> {
             ConfigFiles.getPlayer().reloadConfig();
-        }
+        });
         return true;
     }
 }

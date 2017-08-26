@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class C_opall extends FCommand {
 
@@ -23,11 +22,11 @@ public class C_opall extends FCommand {
         }
 
         if (args.length == 0) {
-            for (Player player : Bukkit.getOnlinePlayers()) {
+            Bukkit.getOnlinePlayers().stream().forEach((player) -> {
                 sender.sendMessage(ChatColor.AQUA + sender.getName() + " - Opping all players on the server!");
                 sender.sendMessage(OP);
                 player.setOp(true);
-            }
+            });
             return true;
         }
         return true;

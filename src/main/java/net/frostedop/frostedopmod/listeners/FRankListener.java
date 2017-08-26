@@ -21,8 +21,6 @@ public class FRankListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        String UUID = event.getPlayer().getUniqueId().toString();
-
         final Player player = event.getPlayer();
         if (Ranks.isImposter(player)) {
             RankDisplay.rankJoin(RankDisplay.Rank.IMPOSTER, player);

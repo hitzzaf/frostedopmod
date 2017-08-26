@@ -47,11 +47,9 @@ public class FPlayerListener implements Listener {
             ConfigFiles.getPlayer().saveConfig();
         }
 
-        for (String uuid : PlayerConfig.getKeys(false)) {
-            if (!PlayerConfig.getString(uuid + P_IP).contains(event.getPlayer().getAddress().getHostString())) {
-                ConfigEntry.PlayerConfig().set(UUID + ".isimposter", true);
-            }
-        }
+        PlayerConfig.getKeys(false).stream().filter((uuid) -> (!PlayerConfig.getString(uuid + P_IP).contains(event.getPlayer().getAddress().getHostString()))).forEach((_item) -> {
+            ConfigEntry.PlayerConfig().set(UUID + ".isimposter", true);
+        });
 
         if (Ranks.isImposter(event.getPlayer())) {
             ConfigEntry.PlayerConfig().set(UUID + P_FROZEN, true);

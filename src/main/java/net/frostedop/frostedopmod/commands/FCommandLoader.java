@@ -68,9 +68,7 @@ public class FCommandLoader {
                 f.setAccessible(true);
                 cmap = (CommandMap) f.get(getServer());
                 return getCommandMap();
-            } catch (NoSuchFieldException e) {
-                FLog.severe(e);
-            } catch (IllegalAccessException e) {
+            } catch (NoSuchFieldException | IllegalAccessException e) {
                 FLog.severe(e);
             }
         } else if (cmap != null) {

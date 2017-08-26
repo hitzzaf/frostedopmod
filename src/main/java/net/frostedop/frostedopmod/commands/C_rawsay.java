@@ -29,9 +29,9 @@ public class C_rawsay extends FCommand {
         final String message = StringUtils.join(ArrayUtils.subarray(args, 1, args.length), " ");
 
         if (args.length == 0) {
-            for (Player player : Bukkit.getOnlinePlayers()) {
+            Bukkit.getOnlinePlayers().stream().forEach((player) -> {
                 player.sendMessage(FUtil.color(message));
-            }
+            });
             return true;
         }
         return true;

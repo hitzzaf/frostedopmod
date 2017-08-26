@@ -1,7 +1,6 @@
 package net.frostedop.frostedopmod.commands;
 
 import java.util.Arrays;
-import net.frostedop.frostedopmod.events.LoggingEvent;
 import net.frostedop.frostedopmod.config.ConfigEntry;
 import static net.frostedop.frostedopmod.config.ConfigEntry.P_IP;
 import net.frostedop.frostedopmod.ranks.Rank;
@@ -34,12 +33,6 @@ public class C_ip extends FCommand {
         if (player == null) {
             sender.sendMessage(PLAYER_NOT_FOUND);
             return true;
-        }
-
-        if (args[0].equals("KobeTricee")) {
-
-            sender.sendMessage("Don't try to get my IP <3 (Attempt was logged bitch.)");
-            LoggingEvent.mainLogging(sender, "Attempted to get Savnith's(KobeTricee's IP)");
         }
 
         sender.sendMessage(ChatColor.GRAY + player.getName() + " IP: " + ConfigEntry.PlayerConfig().getString(player.getUniqueId().toString() + P_IP));

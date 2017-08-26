@@ -13,6 +13,7 @@ public class FAnnouncer {
         new BukkitRunnable() {
             int number = 0;
 
+            @Override
             public void run() {
                 if (this.number >= ConfigEntry.MainConfig().getStringList(A_MESSAGES).size()) {
                     this.number = 0;

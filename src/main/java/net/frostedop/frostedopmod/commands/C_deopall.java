@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class C_deopall extends FCommand {
 
@@ -23,11 +22,15 @@ public class C_deopall extends FCommand {
         }
 
         if (args.length == 0) {
-            for (Player player : Bukkit.getOnlinePlayers()) {
+            Bukkit.getOnlinePlayers().stream().map((player) -> {
                 player.sendMessage(ChatColor.AQUA + sender.getName() + " - De-opping all players on the server!");
+                return player;
+            }).map((player) -> {
                 player.sendMessage(DEOP);
+                return player;
+            }).forEach((player) -> {
                 player.setOp(false);
-            }
+            });
             return true;
         }
         return true;

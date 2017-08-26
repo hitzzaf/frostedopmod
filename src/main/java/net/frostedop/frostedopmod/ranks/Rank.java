@@ -6,43 +6,23 @@ import org.bukkit.command.CommandSender;
 public class Rank {
 
     public static boolean isAdmin(CommandSender sender) {
-        if (!Ranks.isSuperAdmin(sender) && !Ranks.isTelnetAdmin(sender) && !Ranks.isSeniorAdmin(sender)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(!Ranks.isSuperAdmin(sender) && !Ranks.isTelnetAdmin(sender) && !Ranks.isSeniorAdmin(sender));
     }
 
     public static boolean isTelnetAdmin(CommandSender sender) {
-        if (!Ranks.isTelnetAdmin(sender) && !Ranks.isSeniorAdmin(sender)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(!Ranks.isTelnetAdmin(sender) && !Ranks.isSeniorAdmin(sender));
     }
 
     public static boolean isSeniorAdmin(CommandSender sender) {
-        if (!Ranks.isSeniorAdmin(sender)) {
-            return false;
-        } else {
-            return true;
-        }
+        return Ranks.isSeniorAdmin(sender);
     }
 
     // Special ranks
     public static boolean isExecutive(CommandSender sender) {
-        if (!Ranks.isExecutive(sender) && !Ranks.isDeveloper(sender) && !Ranks.isOwner(sender)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(!Ranks.isExecutive(sender) && !Ranks.isDeveloper(sender) && !Ranks.isOwner(sender));
     }
 
     public static boolean isBuilder(CommandSender sender) {
-        if (!FUtil.MASTERBUILDERS.contains(sender.getName())) {
-            return false;
-        } else {
-            return true;
-        }
+        return FUtil.MASTERBUILDERS.contains(sender.getName());
     }
 }
