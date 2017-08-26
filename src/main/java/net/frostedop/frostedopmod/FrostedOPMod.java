@@ -1,5 +1,6 @@
 package net.frostedop.frostedopmod;
 
+import net.frostedop.frostedopmod.bridge.WorldEditBridge;
 import net.frostedop.frostedopmod.listeners.FBlockListener;
 import net.frostedop.frostedopmod.commands.FCommandLoader;
 import net.frostedop.frostedopmod.config.ConfigEntry;
@@ -36,7 +37,9 @@ public class FrostedOPMod extends JavaPlugin {
         FLog.info("Plugin State:" + FUtil.NOT_STABLE);
 
         // Start Services
+        FAnnouncer.Broadcast(this);
         this.weather();
+        new WorldEditBridge();
         new WorldManager();
         new FBlockListener();
         new FBlockListener();
@@ -57,6 +60,7 @@ public class FrostedOPMod extends JavaPlugin {
         for (final Player all : Bukkit.getOnlinePlayers()) {
             if (ConfigEntry.MainConfig().getBoolean(T_NO_RAIN)) {
                 new BukkitRunnable() {
+                    @Override
                     public void run() {
                         all.getWorld().setWeatherDuration(0);
                         all.getWorld().setThunderDuration(0);
@@ -65,10 +69,11 @@ public class FrostedOPMod extends JavaPlugin {
             }
             if (ConfigEntry.MainConfig().getBoolean(T_AUTODAY)) {
                 new BukkitRunnable() {
+                    @Override
                     public void run() {
-                        for (Player all : Bukkit.getOnlinePlayers()) {
+                        Bukkit.getOnlinePlayers().stream().forEach((all) -> {
                             all.getWorld().setTime(600L);
-                        }
+                        });
                     }
                 }.runTaskTimer(this, 0L, 1L);
             }
