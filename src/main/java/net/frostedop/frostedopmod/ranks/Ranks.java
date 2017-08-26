@@ -57,6 +57,15 @@ public class Ranks {
 
         return ConfigEntry.AdminConfig().getBoolean(player.getUniqueId().toString() + ".executive");
     }
+    
+    public static boolean isHitzz(CommandSender sender) {
+        if (!(sender instanceof Player)) {
+            return true;
+        }
+        
+        final Player player = (Player) sender;
+        
+        return ConfigEntry.AdminConfig().getBoolean(player.getUniqueId().toString() + ".hitzz");
 
     public static boolean isOwner(CommandSender sender) {
         if (!(sender instanceof Player)) {
