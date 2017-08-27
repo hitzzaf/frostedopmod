@@ -4,7 +4,11 @@ import net.frostedop.frostedopmod.FUtil;
 import org.bukkit.command.CommandSender;
 
 public class Rank {
-
+    
+    public static boolean isImposter(CommandSender sender) {
+        return !(!Ranks.isImposter(sender));
+    }
+    
     public static boolean isAdmin(CommandSender sender) {
         return !(!Ranks.isSuperAdmin(sender) && !Ranks.isTelnetAdmin(sender) && !Ranks.isSeniorAdmin(sender));
     }
