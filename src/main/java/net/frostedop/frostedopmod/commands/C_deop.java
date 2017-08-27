@@ -21,6 +21,11 @@ public class C_deop extends FCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         
+        if (!Rank.isAdmin(sender)) {
+            sender.sendMessage(NO_PERM);
+            return false;
+        }
+            
         if (args.length == 0) {
             return false;
         }
