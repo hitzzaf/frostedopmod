@@ -13,7 +13,6 @@ import org.bukkit.command.CommandSender;
  *
  * @author Savnith
  */
-
 // Make this in to a GUI? So the admins can pick the default limit.
 public class C_setlimit extends FCommand {
 

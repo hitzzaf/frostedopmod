@@ -17,23 +17,22 @@ public class C_admininformation extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (args.length < 1) {
             return false;
         }
-        
+
         String servername = ConfigEntry.MainConfig().getString("server.name");
-                
+
         String forumlink = ConfigEntry.MainConfig().getString("server.forumlink");
-        
+
         String forumdays = ConfigEntry.MainConfig().getString("server.forumlink");
-        
+
         sender.sendMessage(ChatColor.GREEN + "To get administrator on " + servername + " you'll have to apply on their forums here: " + forumlink);
-       
+
         sender.sendMessage(ChatColor.RED + "You must be registered on the forums for a minimum of " + forumdays + " before you can apply.");
-        
+
         return true;
     }
-    
-    
+
 }

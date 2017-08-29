@@ -19,31 +19,27 @@ public class C_stop extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
-        if (args.length < 1) { 
+
+        if (args.length < 1) {
             return false;
         }
-        
+
         FUtil.bcastMsg(ChatColor.RED + "Server is restarting - You will be kicked in 5 seconds!");
-        
-        try 
-        {
-        Thread.sleep(5000);
-        }   
-        catch(InterruptedException ex) 
-        {
-        Thread.currentThread().interrupt();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
         }
-        
+
         Bukkit.shutdown();
-        
-        
+
         return true;
     }
-    
+
 }

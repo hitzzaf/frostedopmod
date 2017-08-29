@@ -10,7 +10,7 @@ import static net.frostedop.frostedopmod.config.ConfigEntry.P_MUTED;
 import static net.frostedop.frostedopmod.config.ConfigEntry.P_NAME;
 import static net.frostedop.frostedopmod.config.ConfigEntry.P_TAG;
 import net.frostedop.frostedopmod.config.ConfigFiles;
-import net.frostedop.frostedopmod.ranks.Ranks;
+import net.frostedop.frostedopmod.ranks.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -51,7 +51,7 @@ public class FPlayerListener implements Listener {
             ConfigEntry.PlayerConfig().set(UUID + ".isimposter", true);
         });
 
-        if (Ranks.isImposter(event.getPlayer())) {
+        if (Rank.isImpostor(event.getPlayer())) {
             ConfigEntry.PlayerConfig().set(UUID + P_FROZEN, true);
             ConfigEntry.PlayerConfig().set(UUID + P_CMDSBLOCKED, true);
             ConfigFiles.getPlayer().saveConfig();
@@ -61,7 +61,7 @@ public class FPlayerListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
 
-        if (Ranks.isImposter(event.getPlayer())) {
+        if (Rank.isImpostor(event.getPlayer())) {
             ConfigEntry.PlayerConfig().set(event.getPlayer().getUniqueId().toString() + P_FROZEN, false);
             ConfigEntry.PlayerConfig().set(event.getPlayer().getUniqueId().toString() + P_CMDSBLOCKED, false);
             ConfigFiles.getPlayer().saveConfig();
