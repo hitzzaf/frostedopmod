@@ -2,9 +2,10 @@ package net.frostedop.frostedopmod.listeners;
 
 import net.frostedop.frostedopmod.FUtil;
 import net.frostedop.frostedopmod.FrostedOPMod;
-import net.frostedop.frostedopmod.ranks.RankDisplay;
-import net.frostedop.frostedopmod.ranks.Ranks;
+import net.frostedop.frostedopmod.config.ConfigEntry;
+import net.frostedop.frostedopmod.ranks.Rank;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,34 +23,43 @@ public class FRankListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         final Player player = event.getPlayer();
-        if (Ranks.isImposter(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.IMPOSTER, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.IMPOSTER) + "IMP " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.IMPOSTER, player);
-        } else if (Ranks.isSuperAdmin(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.SUPER_ADMIN, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.SUPER_ADMIN) + "SA " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.SUPER_ADMIN, player);
-        } else if (Ranks.isTelnetAdmin(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.TELNET_ADMIN, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.TELNET_ADMIN) + "STA " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.TELNET_ADMIN, player);
-        } else if (Ranks.isSeniorAdmin(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.SENIOR_ADMIN, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.SENIOR_ADMIN) + "SrA " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.SENIOR_ADMIN, player);
-        } else if (Ranks.isExecutive(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.EXECUTIVE, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.EXECUTIVE) + "EXE " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.EXECUTIVE, player);
-        } else if (Ranks.isDeveloper(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.DEVELOPER, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.DEVELOPER) + "Dev " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.DEVELOPER, player);
-        } else if (Ranks.isOwner(player)) {
-            RankDisplay.rankJoin(RankDisplay.Rank.OWNER, player);
-            player.setPlayerListName(FUtil.color(RankDisplay.rankColor(RankDisplay.Rank.OWNER) + "Owner " + player.getName()));
-            RankDisplay.rankJoinTag(RankDisplay.Rank.OWNER, player);
+        if (Rank.isImpostor(player)) {
+            FUtil.bcastMsg(player.getName() + " is " + Rank.getRank(player).getLoginMessage(), ChatColor.AQUA);
+            player.setPlayerListName(Rank.getRank(player).getColor() + "IMP " + player.getName());
+            ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", ChatColor.stripColor(Rank.getRank(player).getTag())); // Not sure if stripping it will work
+        } else if (Rank.isAdmin(player)) {
+            FUtil.bcastMsg(player.getName() + " is " + Rank.getRank(player).getLoginMessage(), ChatColor.AQUA);
+            ConfigEntry.AdminConfig().set(player.getUniqueId().toString() + ".tag", ChatColor.stripColor(Rank.getRank(player).getTag())); // Not sure if stripping it will work
+
+            switch (Rank.getRank(player)) {
+                case SUPER_ADMIN: {
+                    player.setPlayerListName(ChatColor.GOLD + "SA " + player.getName());
+                    break;
+                }
+                case TELNET_ADMIN: {
+                    player.setPlayerListName(ChatColor.DARK_GREEN + "STA " + player.getName());
+                    break;
+                }
+                case SENIOR_ADMIN: {
+                    player.setPlayerListName(ChatColor.LIGHT_PURPLE + "SrA " + player.getName());
+                    break;
+                }
+                case EXECUTIVE: {
+                    player.setPlayerListName(ChatColor.YELLOW + "EXEC " + player.getName());
+                    break;
+                }
+                case DEVELOPER: {
+                    player.setPlayerListName(ChatColor.DARK_PURPLE + "Dev " + player.getName());
+                    break;
+                }
+                case OWNER: {
+                    player.setPlayerListName(ChatColor.BLUE + "Owner " + player.getName());
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
         }
     }
 }

@@ -20,23 +20,23 @@ public class C_reload extends FCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        
+
         if (!Rank.isAdmin(sender)) {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
-        if (args.length < 1) { 
+
+        if (args.length < 1) {
             return false;
         }
-        
+
         FUtil.bcastMsg(ChatColor.GREEN + sender.getName() + " - Reloading the server.");
-        
+
         Bukkit.reload();
-        
+
         FUtil.bcastMsg(ChatColor.RED + "Reload Complete.");
-        
+
         return true;
     }
-    
+
 }

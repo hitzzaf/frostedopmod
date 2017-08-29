@@ -28,7 +28,7 @@ public class C_warn extends FCommand {
             sender.sendMessage(NO_PERM);
             return true;
         }
-        
+
         if (args.length < 1) {
             return false;
         }
@@ -51,7 +51,7 @@ public class C_warn extends FCommand {
     }
 
     public static void warn(Player player, CommandSender sender, String reason) {
-        
+
         if (reason != null) {
             sender.sendMessage(ChatColor.RED + "You have successfully warned, " + player.getName() + " for (" + reason + ").");
             player.sendMessage(ChatColor.RED + "You have been warned by " + sender.getName() + " for (" + reason + ").");
