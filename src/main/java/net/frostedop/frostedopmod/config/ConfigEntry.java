@@ -9,6 +9,8 @@ public class ConfigEntry {
     public static final String S_MOTD_L2 = "server.motd-line-2";
     public static final String S_FULL_MOTD = "server.motd-full-server";
     public static final String S_PERMBAN_URL = "server.perm-ban-url";
+    public static final String L_FORUM_LINK = "server.forumlink";
+    public static final String L_FORUM_DAYS = "server.forumdays";
     public static final String S_BAN_URL = "server.gtfo-url";
     public static final String A_ENABLED = "announcer.enabled";
     public static final String A_PREFIX = "announcer.prefix";
