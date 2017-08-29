@@ -6,7 +6,6 @@ import java.util.List;
 import net.frostedop.frostedopmod.FLog;
 import static net.frostedop.frostedopmod.FrostedOPMod.plugin;
 import net.frostedop.frostedopmod.config.ConfigEntry;
-import net.frostedop.frostedopmod.ranks.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

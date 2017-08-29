@@ -34,7 +34,7 @@ public class FrostedOPMod extends JavaPlugin {
         ConfigFiles.setup();
         FLog.info("FrostedOPMod has been enabled!");
         FLog.info("Created by: Savnith");
-        FLog.info("Plugin State:" + FUtil.NOT_STABLE);
+        FLog.info("Plugin State: " + FUtil.NOT_STABLE);
 
         // Start Services
         FAnnouncer.Broadcast(this);

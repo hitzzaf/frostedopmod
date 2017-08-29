@@ -50,7 +50,6 @@ public class Config {
 
     public void saveConfig() {
         if (fileConfiguration == null || configFile == null) {
-            // don't return??
         } else {
             try {
                 getConfig().save(configFile);

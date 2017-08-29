@@ -26,7 +26,6 @@ public class FChatListener implements Listener {
         String UUID = event.getPlayer().getUniqueId().toString();
 
         String tag = ConfigEntry.PlayerConfig().getString(UUID + P_TAG);
-        String chatcolor = ConfigEntry.PlayerConfig().getString(UUID + P_CHATCOLOR);
         String displayname = event.getPlayer().getDisplayName();
         String message = event.getMessage().trim();
 
@@ -34,12 +33,15 @@ public class FChatListener implements Listener {
             event.getPlayer().sendMessage(ChatColor.GRAY + "You can't talk while muted!");
             event.setCancelled(true);
         }
-
+        
+        // ChatColor will be fixed at a later date <3
         if (tag == null) {
-            String chatformat = color("&f<" + displayname + "&f> " + chatcolor + message);
+            String chatformat = color(
+                    ChatColor.GRAY + displayname + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY + message);
             event.setFormat(chatformat);
         } else {
-            String chatformat = color(tag + " &f<" + displayname + "&f>" + chatcolor + message);
+            String chatformat = color(
+                    tag + " " + ChatColor.GRAY + displayname + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY +  message);
             event.setFormat(chatformat);
         }
     }

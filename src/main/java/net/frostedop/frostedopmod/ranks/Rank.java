@@ -16,7 +16,8 @@ public enum Rank {
     EXECUTIVE("a", "", "Executive", ChatColor.YELLOW),
     DEVELOPER("a", "Developer", "Dev", ChatColor.DARK_PURPLE),
     MASTER_BUILDER("a", "Master Builder", "Master Builder", ChatColor.GOLD),
-    OWNER("the", "Owner", "Owner", ChatColor.BLUE);
+    OWNER("the", "Owner", "Owner", ChatColor.BLUE),
+    CONSOLE("the", "Console", "Console", ChatColor.DARK_PURPLE);
 
     public final String lmsg_pre;
     public final String lmsg;
@@ -43,7 +44,7 @@ public enum Rank {
     }
 
     public String getLoginMessage() {
-        return lmsg_pre + " " + getColor() + " " + lmsg;
+        return lmsg_pre + " " + getColor() + lmsg;
     }
 
     public String getTag() {
@@ -91,10 +92,10 @@ public enum Rank {
             return getRank((Player) sender);
         }
 
-        return Rank.OWNER; // Console is owner, I guess?
+        return Rank.CONSOLE;
     }
-
-    // TODO: find a cleaner way to do this
+    
+    // TODO: find a cleaner way to do this 
     public static boolean isImpostor(Player player) {
         return getRank(player) == Rank.IMPOSTOR;
     }

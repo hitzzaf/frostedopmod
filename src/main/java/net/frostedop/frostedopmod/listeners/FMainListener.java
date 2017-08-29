@@ -47,7 +47,8 @@ public class FMainListener implements Listener {
             event.getPlayer().sendMessage(ChatColor.GRAY + "Your commands are currently blocked!");
             event.setCancelled(true);
         }
-
+        
+        // Does this even work??
         if (ConfigEntry.AdminConfig().getBoolean(event.getPlayer().getUniqueId().toString() + ".cmdspy")) {
             Bukkit.getOnlinePlayers().stream().forEach((player) -> {
                 player.sendMessage(event.getPlayer() + ": " + event.getMessage().toLowerCase());

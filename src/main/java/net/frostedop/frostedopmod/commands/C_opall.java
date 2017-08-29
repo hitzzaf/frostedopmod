@@ -23,8 +23,8 @@ public class C_opall extends FCommand {
 
         if (args.length == 0) {
             Bukkit.getOnlinePlayers().stream().forEach((player) -> {
-                sender.sendMessage(ChatColor.AQUA + sender.getName() + " - Opping all players on the server!");
-                sender.sendMessage(OP);
+                player.sendMessage(ChatColor.AQUA + sender.getName() + " - Opping all players on the server!");
+                player.sendMessage(OP);
                 player.setOp(true);
             });
             return true;
